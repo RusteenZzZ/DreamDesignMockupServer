@@ -45,7 +45,7 @@ const clean_uploaded_image_folder = () => {
 
 // Define a route for file upload
 app.post('/search-similar', upload.single("image"), (req, res) => {
-  console.log(`../uploaded_image/${req.file.filename}`);
+  console.log("Starting Shakibas code");
 
   // Run the Python script
   exec(`python ./ai/model.py uploaded_image/${req.file.filename}`, (error, stdout, stderr) => {
@@ -54,12 +54,12 @@ app.post('/search-similar', upload.single("image"), (req, res) => {
       clean_uploaded_image_folder();
       res.status(500).send('Internal Server Error');
     } else {
-      // Send the output of the Python script as the response
-      // console.log(`Python script output: ${stdout}`);
       clean_uploaded_image_folder();
+      console.log("Finnishing Shakibas code");
       res.status(200).send(stdout);
     }
   });
+
 });
 
 // Start the server
